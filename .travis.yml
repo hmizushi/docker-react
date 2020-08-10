@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t hmizushi/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true hmizushi/docker-react npm run test
